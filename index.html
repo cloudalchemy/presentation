@@ -1,92 +1,150 @@
 <!DOCTYPE html>
-	<html class="sl-root decks export offline loaded">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Prometheus deployment with Ansible</title>
-
-
-		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
-		<link rel="stylesheet" type="text/css" href="lib/logo.css">
-
-
-
-	</head>
-	<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
-		<div class="logo">
-			<img src="promansible/logo_gray.png" width="200">
-		</div>
-		<div class="reveal">
-			<div class="slides">
-				<section data-id="5c307ddd377d641e458ef7fa6f987420"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="e80481757e4ea2f56a62091bcf09af1b" style="height: auto; min-width: 30px; min-height: 30px; width: 870px; left: 205px; top: 263px;" _vimium-has-onclick-listener=""><div class="sl-block-style" style="z-index: 11;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: center;" data-vivaldi-spatnav-clickable="1">
-<p><strong><span style="font-size:2.5em">Prometheus &amp; Ansible</span></strong></p>
-</div></div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="e38f4c835613e19a9a6ac0a5b00f3eeb" style="height: auto; min-width: 30px; min-height: 30px; width: 768px; left: 279px; top: 432px;" _vimium-has-onclick-listener=""><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<p>a way to manage monitoring</p>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="f888bc0f03ce004cd6f7b230a6efad1d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 360px; top: 504px;" _vimium-has-onclick-listener=""><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-vivaldi-spatnav-clickable="1">
-<p><em><span style="font-size:0.7em">Roman Demachkovych</span></em></p>
-
-<p><em><span style="font-size:0.7em">Paweł Krupa</span></em></p>
-</div></div></section><section class="stack" data-id="a46818822a2dae8350dc9d59094c1b7d"><section data-id="6fd9d58db548e55f7bccb63d7777247f"><div class="sl-block" data-block-type="image" data-vivaldi-spatnav-clickable="1" data-block-id="45543f7a244153659f47aa1d9a8fdb4d" style="min-width: 30px; min-height: 30px; width: 534px; height: 534px; left: 373px; top: 93px;" _vimium-has-onclick-listener=""><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="800" data-natural-height="800" style="" data-lazy-loaded="" data-src="promansible/de9c71a3efe53191c83569ede165c573.png"></div></div></section><section data-id="923f8f446bc1849f15c0ee6f6f335e45"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="561a1dd38c6007960b98f3e31b19200c" style="height: auto; min-width: 30px; min-height: 30px; width: 880px; left: 200px; top: 253px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li style="" class="fragment" data-fragment-index="0"><span style="font-size:1.4em">simple</span></li>
-	<li style="" class="fragment" data-fragment-index="1"><span style="font-size:1.4em">agentless</span></li>
-	<li style="" class="fragment" data-fragment-index="2"><span style="font-size:1.4em">one basic dependency - python</span></li>
-	<li style="" class="fragment" data-fragment-index="3"><span style="font-size:1.4em">config in YAML and jinja2</span></li>
-</ul>
-</div></div></section></section><section class="stack" data-id="0b0ded83d41be96f26f86c5c91642145"><section data-id="882d51a1e4312312aa24b25710a39f53"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="3d37863ba23974118b6ad468ad60b28c" style="height: auto; min-width: 30px; min-height: 30px; width: 778px; left: 239px; top: 432px;" _vimium-has-onclick-listener=""><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="" data-gramm_id="abb1b154-c890-2392-7f0a-b0d28c602759" data-gramm="true" data-gramm_editor="true">
-<h1><span style="font-size:1.6em">Prometheus</span></h1>
-</div></div>
-<div class="sl-block" data-block-type="image" _vimium-has-onclick-listener="" style="min-width: 30px; min-height: 30px; width: 314px; height: 321px; left: 480px; top: 144px;" data-block-id="56aeadda544622f44518d5b06bd89049" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="470" data-natural-height="480" data-lazy-loaded="" data-src="promansible/a3d2e30f198a28f6fdde4417df795c1c.png"></div></div></section><section data-id="cdff4f24a1b1a37155a0766634d735e3">
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 256px;" data-block-id="3b8124be5e55a166070aa45ea126a939" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 160%;" _vimium-has-onclick-listener="" data-vivaldi-spatnav-clickable="1">
-<p>Open source, metrics-based monitoring system.</p>
-
-<p> </p>
-
-<p>It does one thing and does it well.</p>
-</div></div></section><section data-id="22ef19cd5a4860e5ad7f43e0c5517a8d">
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; width: 1119px; left: 80px; top: 195px;" data-vivaldi-spatnav-clickable="1" data-block-id="242cab3fe99f554cbfa2e6e00eaabb16"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 160%;" _vimium-has-onclick-listener="" data-vivaldi-spatnav-clickable="1">
-<p>Simple text format makes it easy to expose metrics to Prometheus.</p>
-
-<p style="text-align:left"> </p>
-
-<p>The data model identifies each time series an unordered set of key-value pairs called labels.</p>
-</div></div></section><section data-id="f7aae4bc4cecd3b9920b6d1a2971afbb">
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; width: 1120px; left: 80px; top: 195px;" data-vivaldi-spatnav-clickable="1" data-block-id="0c4992d26e461debaba5efc68fbbfe91"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 160%;" _vimium-has-onclick-listener="" data-gramm_id="a33bc72e-418e-2463-c9a4-b403e3312681" data-gramm="true" data-gramm_editor="true" data-vivaldi-spatnav-clickable="1">
-<p>Scraped data is stored in local time-series database.</p>
-
-<p> </p>
-
-<p>PromQL expression language allows easy metrics selection and aggregation.</p>
-</div></div></section><section data-id="8af3f2b8bd1b118c9a6c1f9f8e9fdd9e">
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; width: 1120px; left: 80px; top: 268px;" data-vivaldi-spatnav-clickable="1" data-block-id="f5dd39880c0ab047927965e4143010da"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 160%;" _vimium-has-onclick-listener="" data-gramm_id="a33bc72e-418e-2463-c9a4-b403e3312681" data-gramm="true" data-gramm_editor="true" data-vivaldi-spatnav-clickable="1" dir="ui">
-<p>create graphs</p>
-
-<p>set alert rules</p>
-
-<p>expose data</p>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="251413c43719b770d39952abb8f6a935" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 35px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<h2>PromQL</h2>
-</div></div></section><section data-id="f8e6fbc7085ca23e66a0af9e43c29f97"><div class="sl-block" data-block-type="image" _vimium-has-onclick-listener="" style="min-width: 30px; min-height: 30px; width: 1049px; height: 580px; left: 80px; top: 138px;" data-block-id="5cfde9dd3fe4a24f6404167920422f48" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="671" data-natural-height="371" data-lazy-loaded="" data-src="promansible/3b834289dfbcda2ec478ec25ac728acc.png"></div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="7cd525f9645e665638b91522d5c6ff72" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 35px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<h2>Architecture</h2>
-</div></div></section><section data-id="3d8ffb9f123b89c2ed4690253020e7d1"><div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; width: 480px; left: 400px; top: 35px;" data-block-id="6d8683c2515d2d7c97378b5fad3ff2b7" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" _vimium-has-onclick-listener="" data-gramm_id="7ba064a1-27a4-b1e5-8441-9eb5420655e7" data-gramm="true" data-gramm_editor="true" data-vivaldi-spatnav-clickable="1">
-<h2>Caution!</h2>
-</div></div>
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 238px;" data-block-id="bf552b16f4bd8f1e5ced08b74399dc6d" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" _vimium-has-onclick-listener="" data-gramm_id="157aaf7b-e733-b3cb-c9b9-ae1be4f0de11" data-gramm="true" data-gramm_editor="true" dir="ui" data-vivaldi-spatnav-clickable="1">
-<p><span style="font-size:1.6em">If you need 100% accuracy, such as for per-request billing, Prometheus is not a good choice as the collected data will likely not be detailed and complete enough.</span></p>
-</div></div></section></section><section class="stack" data-id="afa149f87a4019dbc26891f9969e0cb9"><section data-id="3bf4dc16e5308e2a7a859179ae17c1d0"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="6a895f8946632bdad105d4d304a3cd5e" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 240px; top: 311px;" _vimium-has-onclick-listener=""><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h1><span style="font-size:1.0em">How to gather data?</span></h1>
-</div></div>
-</section><section data-id="b4de34687d7fc029eb3d670dbae4affc">
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="6cc34f6229b516484aa394c60374d5e2" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 33px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1">
-<h2><span style="font-size:60px">Metrics exposition format</span></h2>
-</div></div>
-
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" data-block-id="2332469ccbbc98ecf9fbdfa63dc7ef6f" style="min-width: 30px; min-height: 30px; width: 1120px; height: 569px; left: 80px; top: 151px;"><div class="sl-block-content" data-highlight-theme="solarized-light" style="z-index: 12;"><pre class="python"><code># HELP http_request_duration_microseconds The HTTP request latencies in microseconds.
+<html class="sl-root decks export offline loaded">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Prometheus deployment with Ansible</title>
+    <link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+    <link rel="stylesheet" type="text/css" href="lib/logo.css">
+  </head>
+  <body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+    <div class="logo">
+      <img src="promansible/logo_gray.png" width="200">
+    </div>
+    <div class="reveal">
+      <div class="slides">
+        <section >
+          <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 870px; left: 205px; top: 263px;" >
+            <div class="sl-block-style" style="z-index: 11;">
+              <div class="sl-block-content" style="z-index: 11; text-align: center;" >
+                <p><strong><span style="font-size:2.5em">Prometheus &amp; Ansible</span></strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 768px; left: 279px; top: 432px;" >
+            <div class="sl-block-content" style="z-index: 12;" >
+              <p>a way to manage monitoring</p>
+            </div>
+          </div>
+          <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 360px; top: 504px;" >
+            <div class="sl-block-content" style="z-index: 13;" >
+              <p><em><span style="font-size:0.7em">Roman Demachkovych</span></em></p>
+              <p><em><span style="font-size:0.7em">Paweł Krupa</span></em></p>
+            </div>
+          </div>
+        </section>
+        <section class="stack" >
+          <section >
+            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 534px; height: 534px; left: 373px; top: 93px;" >
+              <div class="sl-block-content" style="z-index: 12;"><img data-natural-width="800" data-natural-height="800"  data-src="promansible/de9c71a3efe53191c83569ede165c573.png"></div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 880px; left: 200px; top: 253px;">
+              <div class="sl-block-content" style="z-index: 11;" >
+                <ul>
+                  <li style="font-size:1.4em" class="fragment" data-fragment-index="0"><span>simple</span></li>
+                  <li style="font-size:1.4em" class="fragment" data-fragment-index="1"><span>agentless</span></li>
+                  <li style="font-size:1.4em" class="fragment" data-fragment-index="2"><span>one basic dependency - python</span></li>
+                  <li style="font-size:1.4em" class="fragment" data-fragment-index="3"><span>config in YAML and jinja2</span></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="stack" >
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 778px; left: 239px; top: 432px;" >
+              <div class="sl-block-content" style="z-index: 11;" data-gramm_editor="true">
+                <h1><span style="font-size:1.6em">Prometheus</span></h1>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 314px; height: 321px; left: 480px; top: 144px;">
+              <div class="sl-block-content" style="z-index: 12;"><img  data-natural-width="470" data-natural-height="480" data-src="promansible/a3d2e30f198a28f6fdde4417df795c1c.png"></div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 256px;">
+              <div class="sl-block-content" style="z-index: 13; font-size: 160%;">
+                <p>Open source, metrics-based monitoring system.</p>
+                <p> </p>
+                <p>It does one thing and does it well.</p>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1119px; left: 80px; top: 195px;">
+              <div class="sl-block-content" style="z-index: 11; font-size: 160%;">
+                <p>Simple text format makes it easy to expose metrics to Prometheus.</p>
+                <p style="text-align:left"> </p>
+                <p>The data model identifies each time series an unordered set of key-value pairs called labels.</p>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 195px;">
+              <div class="sl-block-content" style="z-index: 11; font-size: 160%;"    data-gramm_editor="true" >
+                <p>Scraped data is stored in local time-series database.</p>
+                <p> </p>
+                <p>PromQL expression language allows easy metrics selection and aggregation.</p>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 268px;">
+              <div class="sl-block-content" style="z-index: 11; font-size: 160%;"    data-gramm_editor="true"  dir="ui">
+                <p>create graphs</p>
+                <p>set alert rules</p>
+                <p>expose data</p>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 12;" >
+                <h2>PromQL</h2>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 1049px; height: 580px; left: 80px; top: 138px;">
+              <div class="sl-block-content" style="z-index: 11;"><img  data-natural-width="671" data-natural-height="371" data-src="promansible/3b834289dfbcda2ec478ec25ac728acc.png"></div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 12;" >
+                <h2>Architecture</h2>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 400px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 12;"    data-gramm_editor="true" >
+                <h2>Caution!</h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 238px;">
+              <div class="sl-block-content" style="z-index: 13;"    data-gramm_editor="true" dir="ui" >
+                <p><span style="font-size:1.6em">If you need 100% accuracy, such as for per-request billing, Prometheus is not a good choice as the collected data will likely not be detailed and complete enough.</span></p>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="stack" >
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 240px; top: 311px;" >
+              <div class="sl-block-content" style="z-index: 11;">
+                <h1><span style="font-size:1.0em">How to gather data?</span></h1>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 33px;">
+              <div class="sl-block-content" style="z-index: 11;" >
+                <h2><span style="font-size:60px">Metrics exposition format</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 1120px; height: 569px; left: 80px; top: 151px;">
+              <div class="sl-block-content" data-highlight-theme="solarized-light" style="z-index: 12;">
+                <pre class="python"><code># HELP http_request_duration_microseconds The HTTP request latencies in microseconds.
 # TYPE http_request_duration_microseconds summary
 http_request_duration_microseconds{handler="prometheus",quantile="0.5"} 73334.095
 http_request_duration_microseconds{handler="prometheus",quantile="0.9"} 85549.187
@@ -113,12 +171,19 @@ http_response_size_bytes_count{handler="prometheus"} 109800
 # HELP node_arp_entries ARP entries by device
 # TYPE node_arp_entries gauge
 node_arp_entries{device="docker0"} 1
-node_arp_entries{device="eth0"} 4</code></pre></div></div></section><section data-id="fe337775a067327b03548b766f75d783">
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1120px; left: 86px; top: 33px;" data-block-id="54630bf5bb8c572bdf43e5ad2c6ec102"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1">
-<h2><span style="font-size:60px">Embed into software</span></h2>
-</div></div>
-
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" data-block-id="58b50b3107dd126e49ca2cdbe7509d31" style="min-width: 30px; min-height: 30px; width: 1040px; height: 504px; left: 160px; top: 144px;"><div class="sl-block-content" data-highlight-theme="solarized-light" style="z-index: 12;"><pre class="markdown"><code>Official client libraries:
+node_arp_entries{device="eth0"} 4</code></pre>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 86px; top: 33px;" >
+              <div class="sl-block-content" style="z-index: 11;" >
+                <h2><span style="font-size:60px">Embed into software</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 1040px; height: 504px; left: 160px; top: 144px;">
+              <div class="sl-block-content" data-highlight-theme="solarized-light" style="z-index: 12;">
+                <pre class="markdown"><code>Official client libraries:
 
 * <a href="https://github.com/prometheus/client_golang">Go</a>
 * <a href="https://github.com/prometheus/client_java">Java or Scala</a>
@@ -138,11 +203,20 @@ Unofficial third-party client libraries:
 * <a href="https://github.com/andrasm/prometheus-net">.NET / C#</a>
 * <a href="https://github.com/siimon/prom-client">node.js</a>
 * <a href="https://github.com/Jimdo/prometheus_client_php">PHP</a>
-* <a href="https://github.com/pingcap/rust-prometheus">Rust</a></code></pre></div></div></section><section data-id="7a5b79eb3bc8a1f0e14580b319877efd">
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1120px; left: 80px; top: 33px;" data-block-id="ba5ee832f2a98667eb1edc334b85ded3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1">
-<h2><span style="font-size:1.0em">Or use metrics exporters</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" style="width: 960px; height: 322px; left: 166px; top: 215px;" data-block-id="3a91cdbb8894448260ea2e1144d959f1"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content" style="z-index: 11;" data-highlight-theme="solarized-light"><pre class="markdown"><code>## Core components starting at 9090
+* <a href="https://github.com/pingcap/rust-prometheus">Rust</a></code></pre>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 33px;" >
+              <div class="sl-block-content" style="z-index: 10;" >
+                <h2><span style="font-size:1.0em">Or use metrics exporters</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="width: 960px; height: 322px; left: 166px; top: 215px;" >
+              <div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 11;" data-highlight-theme="solarized-light">
+                  <pre class="markdown"><code>## Core components starting at 9090
 
 * 9090 - Prometheus server
 * 9091 - Pushgateway
@@ -156,14 +230,26 @@ Unofficial third-party client libraries:
 * 9102 - <a href="http://github.com/prometheus/statsd_exporter">StatsD exporter</a>
 * 9103 - <a href="http://github.com/prometheus/collectd_exporter">Collectd exporter</a>
 * 9108 - <a href="http://github.com/prometheus/graphite_exporter">Graphite exporter</a>
-* 9110 - <a href="https://github.com/prometheus/blackbox_exporter">Blackbox exporter</a></code></pre></div></div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 600px; left: 330px; top: 609px;" data-block-id="408e195b34a37c7e3caaf8de3232b6e3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<p><a href="https://prometheus.io/docs/instrumenting/exporters/">And many more...</a></p>
-</div></div></section><section data-id="baa11d1e6671a29af73b82883f3ca79c">
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1120px; left: 80px; top: 37px;" data-block-id="ee71811295aa997823ac5472227f86fc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1">
-<h2><span style="font-size:1.0em">Write your own!</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" style="width: 715px; height: 506px; left: 283px; top: 144px;" data-block-id="fba47c0d9a9176662f3c0f92a7e97d05"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content" style="z-index: 11; font-size: 80%;" data-highlight-theme="xcode"><pre class="python"><code>import json
+* 9110 - <a href="https://github.com/prometheus/blackbox_exporter">Blackbox exporter</a></code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 330px; top: 609px;" >
+              <div class="sl-block-content" style="z-index: 12;" >
+                <p><a href="https://prometheus.io/docs/instrumenting/exporters/">And many more...</a></p>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 37px;" >
+              <div class="sl-block-content" style="z-index: 10;" >
+                <h2><span style="font-size:1.0em">Write your own!</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="width: 715px; height: 506px; left: 283px; top: 144px;" >
+              <div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 11; font-size: 80%;" data-highlight-theme="solarized-light">
+                  <pre class="python"><code>import json
 import time
 import urllib2
 from prometheus_client import start_http_server
@@ -191,164 +277,338 @@ class JenkinsCollector(object):
 if __name__ == "__main__":
   REGISTRY.register(JenkinsCollector())
   start_http_server(9118)
-  while True: time.sleep(1)</code></pre></div></div></div></section><section data-id="296ef2f8c23ac031c2017dac9ffe6d19">
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1120px; left: 80px; top: 37px;" data-block-id="5b08256a25d1b32235ad50f7fd95539c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1">
-<h2><span style="font-size:54px">Connect prometheus</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" style="width: 425px; height: 218px; left: 428px; top: 288px;" data-block-id="f6e9f8c410bdb70f8e401495a6df6eb2"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content" style="z-index: 11; font-size: 120%;" data-highlight-theme="xcode"><pre class="python"><code>scrape_configs:
+  while True: time.sleep(1)</code></pre>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 37px;" >
+              <div class="sl-block-content" style="z-index: 10;" >
+                <h2><span style="font-size:54px">Connect prometheus</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="width: 425px; height: 218px; left: 428px; top: 288px;" >
+              <div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 11; font-size: 120%;" data-highlight-theme="solarized-light">
+                  <pre class="python"><code>scrape_configs:
   - job_name: 'node_exporter'
     static_configs:
       - targets: 
-          - 'localhost:9100'</code></pre></div></div></div></section></section><section class="stack" data-id="53f576345432db2b45429ac3fed380e4"><section data-id="837911bccbb39fae02813facbeb78c86"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 311px;" _vimium-has-onclick-listener="" data-block-id="323e2a033f34685b2b3237c5d510b30a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h1><span style="font-size:1.0em">Visualise.</span></h1>
-</div></div>
-</section><section data-id="bdd1f7b2420b02398b5cf7f99d0ccba0"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 37px;" _vimium-has-onclick-listener="" data-block-id="8f8164e41477f2a8036fd3eccc488d24"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">Promdash</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="image" data-vivaldi-spatnav-clickable="1" data-block-id="146cb3b385a212106e633caff3074788" style="min-width: 30px; min-height: 30px; width: 748px; height: 533px; left: 266px; top: 144px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="748" data-natural-height="533" style="" data-lazy-loaded="" data-src="promansible/96264c33e35ce00e7789e1f40a502e2d.png"></div></div></section><section data-id="dd093237b8d5cc8190c424a9b4922e4a"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 33px;" _vimium-has-onclick-listener="" data-block-id="331069644be7d0f89192615c71597a5f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:60px">Grafana!</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="image" data-vivaldi-spatnav-clickable="1" data-block-id="9f7cc0bc8b5f9bfdd7e5242f3476c7a4" style="min-width: 30px; min-height: 30px; width: 1075px; height: 604px; left: 103px; top: 116px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1366" data-natural-height="768" data-lazy-loaded="" data-src="promansible/de2ba8eb8caa9d4c7233de39a6711871.png"></div></div></section><section data-id="ffa8d1e8422c637823f46ddfcbf3447d"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 37px;" _vimium-has-onclick-listener="" data-block-id="20fcea28a644577da77202dd14ad7884"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:60px">Prometheus integration</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="928bea874f8200b402f12dcffb174001" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 469px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li style="text-align:left"><span style="font-size:1.4em">Datasource support</span></li>
-	<li style="text-align:left"><span style="font-size:1.4em">Prometheus dashboard</span></li>
-	<li style="text-align:left"><span style="font-size:1.4em">PromQL autocomplete</span></li>
-	<li style="text-align:left"><span style="font-size:1.4em">Alerts</span></li>
-</ul>
-</div></div>
-<div class="sl-block" data-block-type="image" data-vivaldi-spatnav-clickable="1" data-block-id="afb203bced334658ca09a450fad5bf8f" style="min-width: 30px; min-height: 30px; width: 456px; height: 220px; left: 412px; top: 178px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="456" data-natural-height="220" style="" data-lazy-loaded="" data-src="promansible/d2b57f1b47df365eab221eb4a0d9f939.png"></div></div></section></section><section class="stack" data-id="a9936b5c12b6c5946c7d9d03b4a39190"><section data-id="611576d86eb40ee653dbbd62546182ee"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 311px;" _vimium-has-onclick-listener="" data-block-id="78b72962e753dd6acfc3012d6ab25cfb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h1><span style="font-size:1.0em">Alert!</span></h1>
-</div></div></section><section data-id="99f173b0514c52e3f37da4a42cc65fad"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1121px; left: 79px; top: 268px;" _vimium-has-onclick-listener="" data-block-id="9e6c77cd330bb9e17e311dfff2b82de4"><div class="sl-block-style" style="z-index: 10; transform: rotate(360deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<p><span style="font-size:1.6em">Alertmanager</span><span style="font-size:1.6em"> handles alerts sent by client applications such as the Prometheus, Grafana, etc.</span></p>
-</div></div></div></section><section data-id="8ad6f133b2345ee46840087225210a42"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 878px; left: 201px; top: 35px;" _vimium-has-onclick-listener="" data-block-id="441a1cf5664dd180613eca65e9c0fe09"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="" data-gramm_id="e4602f3f-e18f-4609-ff6d-67dd251c0adb" data-gramm="true" data-gramm_editor="true">
-<h2><span style="font-size:1.0em"> Alertmanager</span></h2>
-</div></div></div>
-<div class="sl-block" data-block-type="image" _vimium-has-onclick-listener="" style="min-width: 30px; min-height: 30px; width: 1041px; height: 383px; left: 160px; top: 150px;" data-block-id="4c758ed6d7bf6b87e3db30f4d2a2ccbf" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1460" data-natural-height="537" data-lazy-loaded="" data-src="promansible/b936150cbad55f24c0be590d99abd2bd.png"></div></div></section><section data-id="5b7c1f1eb6e0c5cb5da66bd64e92c8f8"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1121px; left: 80px; top: 216px;" _vimium-has-onclick-listener="" data-block-id="da07cc310f34a38c89f1106461b0a73c"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="" data-gramm_id="e4602f3f-e18f-4609-ff6d-67dd251c0adb" data-gramm="true" data-gramm_editor="true">
-<ul>
-	<li style="text-align: left;" class="fragment" data-fragment-index="0"><span style="font-size:1.6em">deduplication</span></li>
-	<li style="text-align: left;" class="fragment" data-fragment-index="1"><span style="font-size:1.6em">grouping</span></li>
-	<li style="text-align: left;" class="fragment" data-fragment-index="2"><span style="font-size:1.6em">routing</span></li>
-	<li style="text-align: left;" class="fragment" data-fragment-index="3"><span style="font-size:1.6em">silencing</span></li>
-	<li style="text-align: left;" class="fragment" data-fragment-index="4"><span style="font-size:1.6em">inhibition</span></li>
-	<li style="text-align: left;" class="fragment" data-fragment-index="5"><span style="font-size:1.6em">sending</span></li>
-</ul>
-</div></div></div>
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 350px; top: 35px;" data-block-id="6d27e37d028829d5e31e172c12b03122" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" _vimium-has-onclick-listener="" data-vivaldi-spatnav-clickable="1">
-<h2><span style="text-align:left">Functionality</span></h2>
-</div></div></section><section data-id="55441e7f0d515b7a4afc50f8f64e88cc"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 962px; left: 160px; top: 288px;" _vimium-has-onclick-listener="" data-block-id="0da423504fe849ba91b37eefbe5a94f6"><div class="sl-block-style" style="z-index: 10; transform: rotate(360deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="" data-gramm_id="e4602f3f-e18f-4609-ff6d-67dd251c0adb" data-gramm="true" data-gramm_editor="true">
-<ul>
-	<li style="text-align: left;" class="fragment" data-fragment-index="0"><span style="font-size:1.6em">silencing</span></li>
-	<li style="text-align: left;" class="fragment" data-fragment-index="1">
-<span style="font-size:1.6em">inhibition</span><br>
-	 </li>
-</ul>
-</div></div></div>
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; width: 640px; left: 320px; top: 35px;" data-block-id="562ae8853c5dcd6046444836b401f167" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" _vimium-has-onclick-listener="" data-vivaldi-spatnav-clickable="1">
-<h2><span style="text-align:left">Functionality</span></h2>
-</div></div></section><section data-id="a9384fb48d768b2d6b2aadc197d59b09"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1120px; left: 80px; top: 250px;" _vimium-has-onclick-listener="" data-block-id="37faa4ad55b1f08c4d355eb39e86895b"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="" data-gramm_id="e4602f3f-e18f-4609-ff6d-67dd251c0adb" data-gramm="true" data-gramm_editor="true">
-<h2><span style="font-size:1.0em">Alertmanager supports a mesh configuration to create a cluster for High Availability.</span></h2>
-</div></div></div>
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; min-width: 30px; min-height: 30px; width: 801px; left: 239px; top: 629px;" data-block-id="3bcb757245792b74a666b014ab8c238d" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" _vimium-has-onclick-listener="" data-fragment-index="0">
-<p><span>Warning: High Availability is under active development</span></p>
-</div></div></section><section data-id="ce00759c2c50ff6515116e89eee9682f"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 729px; left: 276px; top: 216px;" _vimium-has-onclick-listener="" data-block-id="795c79ed31631b3d0ce3f72622f4a49d"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="" data-gramm_id="e4602f3f-e18f-4609-ff6d-67dd251c0adb" data-gramm="true" data-gramm_editor="true">
-<ul>
-	<li><span style="font-size:1.4em">email</span></li>
-	<li><span style="font-size:1.4em">hipchat</span></li>
-	<li><span style="font-size:1.4em">pagerduty</span></li>
-	<li><span style="font-size:1.4em">pushover</span></li>
-	<li><span style="font-size:1.4em">slack</span></li>
-	<li><span style="font-size:1.4em">opsgenie</span></li>
-	<li><span style="font-size:1.4em">webhook</span></li>
-	<li><span style="font-size:1.4em">victorops</span></li>
-</ul>
-</div></div></div>
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 35px;" data-block-id="aae6bdced96937ae50ce18bc4e1bf691" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" _vimium-has-onclick-listener="" data-vivaldi-spatnav-clickable="1">
-<h2><span style="text-align:left">Notification integrations</span></h2>
-</div></div></section></section><section class="stack" data-id="42ccbca0ea9ef2d3f0c429e0f3adb8f9"><section data-id="78fe5421898a76ad0be7893076821014"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 311px;" _vimium-has-onclick-listener="" data-block-id="b5d310eaf17e7385c7bed4d652f02565"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h1><span style="font-size:1.0em">Install</span></h1>
-</div></div></section><section data-id="b891f3adb450804a418c62fb5a0a1c7b"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 35px;" _vimium-has-onclick-listener="" data-block-id="8d368ba8be139a61ca975268abb87406"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">Method</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="64de3f84dda5a08664624203319f4f30" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 244px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li class="fragment" data-fragment-index="0" style="">source</li>
-	<li class="fragment" style="" data-fragment-index="1">pre-compiled binary</li>
-	<li class="fragment" data-fragment-index="2" style="">docker container</li>
-</ul>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="4d970a8eed00806c24335287efa3268b" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 504px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li style="" class="fragment" data-fragment-index="3">apt-get install prometheus</li>
-	<li style="" class="fragment" data-fragment-index="3">yum install prometheus</li>
-	<li style="" class="fragment" data-fragment-index="3">any installation from package</li>
-</ul>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 166px;" _vimium-has-onclick-listener="" data-block-id="99c11f5705c01cd0feb0b4c3a746374a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h3><span style="font-size:1.0em">Recommended</span></h3>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="012a8598722da68a568bfec8f922cbc0" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 432px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-vivaldi-spatnav-clickable="1" data-fragment-index="3">
-<h3>Don't do this!</h3>
-</div></div></section><section data-id="be9f84edc9c43afbc2e7730c588f8676"><div class="sl-block" data-block-type="code" _vimium-has-onclick-listener="" style="min-width: 30px; min-height: 30px; width: 1121px; height: 79px; left: 80px; top: 144px;" data-block-id="8da65aaf456fa6ff6947e4d6fc8d45b5" data-vivaldi-spatnav-clickable="1"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 11;" data-fragment-index="0"><pre class="bash"><code>$ cd /tmp
+          - 'localhost:9100'</code></pre>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="stack" >
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 311px;">
+              <div class="sl-block-content" style="z-index: 10;">
+                <h1><span style="font-size:1.0em">Visualise.</span></h1>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 37px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="font-size:1.0em">Promdash</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 748px; height: 533px; left: 266px; top: 144px;">
+              <div class="sl-block-content" style="z-index: 12;"><img data-natural-width="748" data-natural-height="533"  data-src="promansible/96264c33e35ce00e7789e1f40a502e2d.png"></div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 33px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="font-size:60px">Grafana!</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 1075px; height: 604px; left: 103px; top: 116px;">
+              <div class="sl-block-content" style="z-index: 12;"><img  data-natural-width="1366" data-natural-height="768" data-src="promansible/de2ba8eb8caa9d4c7233de39a6711871.png"></div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 37px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="font-size:60px">Prometheus integration</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 469px;">
+              <div class="sl-block-content" style="z-index: 12;" >
+                <ul>
+                  <li style="text-align:left"><span style="font-size:1.4em">Datasource support</span></li>
+                  <li style="text-align:left"><span style="font-size:1.4em">Prometheus dashboard</span></li>
+                  <li style="text-align:left"><span style="font-size:1.4em">PromQL autocomplete</span></li>
+                  <li style="text-align:left"><span style="font-size:1.4em">Alerts</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 456px; height: 220px; left: 412px; top: 178px;">
+              <div class="sl-block-content" style="z-index: 13;"><img data-natural-width="456" data-natural-height="220"  data-src="promansible/d2b57f1b47df365eab221eb4a0d9f939.png"></div>
+            </div>
+          </section>
+        </section>
+        <section class="stack" >
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 311px;">
+              <div class="sl-block-content" style="z-index: 12;">
+                <h1><span style="font-size:1.0em">Alert!</span></h1>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1121px; left: 79px; top: 268px;">
+              <div class="sl-block-style" style="z-index: 10; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 10;">
+                  <p><span style="font-size:1.6em">Alertmanager</span><span style="font-size:1.6em"> handles alerts sent by client applications such as the Prometheus, Grafana, etc.</span></p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 878px; left: 201px; top: 35px;">
+              <div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 11;" data-gramm_editor="true">
+                  <h2><span style="font-size:1.0em"> Alertmanager</span></h2>
+                </div>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 1041px; height: 383px; left: 160px; top: 150px;">
+              <div class="sl-block-content" style="z-index: 12;"><img  data-natural-width="1460" data-natural-height="537" data-src="promansible/b936150cbad55f24c0be590d99abd2bd.png"></div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1121px; left: 80px; top: 216px;">
+              <div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 11;" data-gramm_editor="true">
+                  <ul>
+                    <li style="text-align: left;" class="fragment" data-fragment-index="0"><span style="font-size:1.6em">deduplication</span></li>
+                    <li style="text-align: left;" class="fragment" data-fragment-index="1"><span style="font-size:1.6em">grouping</span></li>
+                    <li style="text-align: left;" class="fragment" data-fragment-index="2"><span style="font-size:1.6em">routing</span></li>
+                    <li style="text-align: left;" class="fragment" data-fragment-index="3"><span style="font-size:1.6em">sending</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 350px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 12;">
+                <h2><span style="text-align:left">Functions</span></h2>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 962px; left: 160px; top: 288px;">
+              <div class="sl-block-style" style="z-index: 10; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 10;" data-gramm_editor="true">
+                  <ul>
+                    <li style="text-align: left;" class="fragment" data-fragment-index="0"><span style="font-size:1.6em">silencing</span></li>
+                    <li style="text-align: left;" class="fragment" data-fragment-index="1">
+                      <span style="font-size:1.6em">inhibition</span><br>
+                       
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 320px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="text-align:left">Functions</span></h2>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 250px;">
+              <div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 11;" data-gramm_editor="true">
+                  <h2><span style="font-size:1.0em">Alertmanager supports a mesh configuration to create a cluster for High Availability.</span></h2>
+                </div>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 801px; left: 239px; top: 629px;">
+              <div class="sl-block-content fragment" style="z-index: 12;"  data-fragment-index="0">
+                <p><span>Warning: High Availability is under active development</span></p>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 729px; left: 276px; top: 216px;">
+              <div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);">
+                <div class="sl-block-content" style="z-index: 11;" data-gramm_editor="true">
+                  <ul>
+                    <li><span style="font-size:1.4em">email</span></li>
+                    <li><span style="font-size:1.4em">hipchat</span></li>
+                    <li><span style="font-size:1.4em">pagerduty</span></li>
+                    <li><span style="font-size:1.4em">pushover</span></li>
+                    <li><span style="font-size:1.4em">slack</span></li>
+                    <li><span style="font-size:1.4em">opsgenie</span></li>
+                    <li><span style="font-size:1.4em">webhook</span></li>
+                    <li><span style="font-size:1.4em">victorops</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 12;">
+                <h2><span style="text-align:left">Notification integrations</span></h2>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="stack" >
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 311px;">
+              <div class="sl-block-content" style="z-index: 12;">
+                <h1><span style="font-size:1.0em">Install</span></h1>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="font-size:1.0em">Method</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 244px;">
+              <div class="sl-block-content" style="z-index: 12;" >
+                <ul>
+                  <li class="fragment" data-fragment-index="0" >source</li>
+                  <li class="fragment"  data-fragment-index="1">pre-compiled binary</li>
+                  <li class="fragment" data-fragment-index="2" >docker container</li>
+                </ul>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 504px;">
+              <div class="sl-block-content" style="z-index: 13;" >
+                <ul>
+                  <li  class="fragment" data-fragment-index="3">apt-get install prometheus</li>
+                  <li  class="fragment" data-fragment-index="3">yum install prometheus</li>
+                  <li  class="fragment" data-fragment-index="3">any installation from package</li>
+                </ul>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 166px;">
+              <div class="sl-block-content" style="z-index: 14;">
+                <h3><span style="font-size:1.0em">Recommended</span></h3>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 432px;">
+              <div class="sl-block-content fragment" style="z-index: 15;"  data-fragment-index="3">
+                <h3>Don't do this!</h3>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 1121px; height: 79px; left: 80px; top: 144px;">
+              <div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);">
+                <div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 11;" data-fragment-index="0">
+                  <pre class="bash"><code>$ cd /tmp
 $ wget https://github.com/prometheus/prometheus/releases/download/v2.2.0/prometheus-2.2.0.linux-amd64.tar.gz
-$ tar -xzf prometheus-2.2.0.linux-amd64.tar.gz</code></pre></div></div></div>
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; min-width: 30px; min-height: 30px; width: 989px; left: 146px; top: 35px;" data-block-id="7a4be22c3bbdd23abc43edb2944d9e6d" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" _vimium-has-onclick-listener="" data-gramm_id="b0b24f0e-261e-a201-2820-715dd507f749" data-gramm="true" data-gramm_editor="true" data-vivaldi-spatnav-clickable="1">
-<h2>Binary</h2>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="7b3d15a8ae08633cf7152f0ccf277366" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 576px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-vivaldi-spatnav-clickable="1" data-fragment-index="3">
-<p>Repeat for every part (prometheus, alertmanager, node_exporter, blackbox_exporter, *_exporter) on multiple nodes every month or so</p>
-</div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" data-block-id="073593308116c0f78292b725978f120c" style="min-width: 30px; min-height: 30px; width: 1120px; height: 72px; left: 80px; top: 252px;"><div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 14;" data-fragment-index="1"><pre class="bash"><code># chmod +x prometheus-2.2.0.linux-amd64/{prometheus,promtool} 
-# cp prometheus-2.2.0.linux-amd64/{prometheus,promtool} /usr/local/bin/
-# chown root:root /usr/local/bin/{prometheus,promtool}</code></pre></div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" data-block-id="58b6bb78e9714118ce47c390f7663a34" style="min-width: 30px; min-height: 30px; width: 1120px; height: 150px; left: 80px; top: 360px;"><div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 15;" data-fragment-index="2"><pre class="bash"><code># mkdir -p /etc/prometheus
-# vim /etc/prometheus/prometheus.yml
-# promtool check config prometheus.yml
+$ tar -xzf prometheus-2.2.0.linux-amd64.tar.gz</code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 989px; left: 146px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 12;"    data-gramm_editor="true" >
+                <h2>Binary</h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 1120px; height: 72px; left: 80px; top: 252px;">
+              <div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 14;" data-fragment-index="1">
+                <pre class="bash"><code>$ sudo chmod +x prometheus-2.2.0.linux-amd64/{prometheus,promtool} 
+$ sudo cp prometheus-2.2.0.linux-amd64/{prometheus,promtool} /usr/local/bin/
+$ sudo chown root:root /usr/local/bin/{prometheus,promtool}</code></pre>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 1120px; height: 150px; left: 80px; top: 360px;">
+              <div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 15;" data-fragment-index="2">
+                <pre class="bash"><code>$ sudo mkdir -p /etc/prometheus
+$ sudo vim /etc/prometheus/prometheus.yml
+$ promtool check config prometheus.yml
 Checking prometheus.yml
 SUCCESS: 0 rule files found
 
-# prometheus --config.file "/etc/prometheus/prometheus.yml" &amp;</code></pre></div></div></section><section data-id="0d7d8a6b41283b8399efe73bcc4c2dcf">
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 160px; top: 35px;" data-block-id="c6ef99fea7d8843927b29f402baed490" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" dir="ui" _vimium-has-onclick-listener="" data-gramm_id="c77f6d01-265e-c32e-784f-580f86a6b549" data-gramm="true" data-gramm_editor="true" data-vivaldi-spatnav-clickable="1">
-<h2><span style="font-size:1.0em">Problems</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="76fb12ea52214cb52822fefc56e64422" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 216px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li style="" class="fragment" data-fragment-index="0"><span style="font-size:1.4em">Too many operations</span></li>
-	<li style="" class="fragment" data-fragment-index="1"><span style="font-size:1.4em">Won't survive reboot</span></li>
-	<li style="" class="fragment" data-fragment-index="2"><span style="font-size:1.4em">No dedicated user</span></li>
-	<li style="" class="fragment" data-fragment-index="3"><span style="font-size:42px">Try changing config</span></li>
-	<li style="" class="fragment" data-fragment-index="4"><span style="font-size:42px">Troublesome upgrade</span></li>
-	<li style="" class="fragment" data-fragment-index="5"><span style="font-size:1.4em">SELinux anyone?</span></li>
-</ul>
-</div></div></section></section><section class="stack" data-id="99021d6d3726268383d8b1768de0dc05"><section data-id="3a596b3f954a6d8327c16f8a4d0e6269"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1040px; left: 120px; top: 259px;" _vimium-has-onclick-listener="" data-block-id="81f656fc29c262d31a553676594c8050"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h1><span style="font-size:1.0em">Manage</span></h1>
-
-<h1><span style="font-size:1.0em">(aka why Ansible?)</span></h1>
-</div></div></section><section data-id="2573e900692d432186b1235d26c7d9c3"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 35px;" _vimium-has-onclick-listener="" data-block-id="a31e52c38539a77b7a8924550e021c82"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">Goals</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="2075a68dd41791d459dca318265773ae" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 160px; top: 253px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li class="fragment" data-fragment-index="0"><span style="font-size:1.4em">Zero-configuration deployment</span></li>
-	<li class="fragment" data-fragment-index="1"><span style="font-size:1.4em">Easy management of multiple nodes</span></li>
-	<li class="fragment" data-fragment-index="2"><span style="font-size:1.4em">Error checking</span></li>
-	<li class="fragment" data-fragment-index="3"><span style="font-size:1.4em">Multiple CPU architecture support</span></li>
-</ul>
-</div></div></section><section data-id="dd29edafc8bf2f30ad67a4ee51edb1fa"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 35px;" _vimium-has-onclick-listener="" data-block-id="8fe1e52a9d8d3f488ffbcc97767a7b65"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">Where is my config?</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="4ee6f29253d1d3025160435796bf0ad2" style="height: auto; min-width: 30px; min-height: 30px; width: 880px; left: 200px; top: 288px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li class="fragment" data-fragment-index="0"><span style="font-size:1.4em">command line parameters</span></li>
-	<li class="fragment" data-fragment-index="1"><span style="font-size:1.4em">main configuration file (in YAML)</span></li>
-	<li class="fragment" data-fragment-index="2"><span style="font-size:1.4em">files included from main file (ex. alert rules or file_sd config)</span></li>
-</ul>
-</div></div></section><section data-id="ed4cff35520dd0d66d8a64c6a41f21f5"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 480px; left: 80px; top: 145px;" _vimium-has-onclick-listener="" data-block-id="8a919a0ffc6d807cd79f321460cd35fe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<p><span style="font-size:1.2em">Prometheus</span></p>
-</div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" data-block-id="8b372f8643c0424f8c4dd2ea3c2907c2" style="min-width: 30px; min-height: 30px; width: 560px; height: 468px; left: 40px; top: 216px;"><div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 12;" data-fragment-index="0"><pre class="python"><code>global:
+$ prometheus --config.file "/etc/prometheus/prometheus.yml" &amp;</code></pre>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 576px;">
+              <div class="sl-block-content fragment" style="z-index: 13;"  data-fragment-index="3">
+                <p>Repeat for every component (prometheus, alertmanager, node_exporter, blackbox_exporter, *_exporter) on multiple nodes every month or so</p>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 160px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 11;" dir="ui"    data-gramm_editor="true" >
+                <h2><span style="font-size:1.0em">Problems</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 216px;">
+              <div class="sl-block-content" style="z-index: 12;" >
+                <ul>
+                  <li  class="fragment" data-fragment-index="0"><span style="font-size:1.4em">Too many operations</span></li>
+                  <li  class="fragment" data-fragment-index="1"><span style="font-size:1.4em">Won't survive reboot</span></li>
+                  <li  class="fragment" data-fragment-index="2"><span style="font-size:1.4em">No dedicated user</span></li>
+                  <li  class="fragment" data-fragment-index="3"><span style="font-size:42px">Try changing config</span></li>
+                  <li  class="fragment" data-fragment-index="4"><span style="font-size:42px">Troublesome upgrade</span></li>
+                  <li  class="fragment" data-fragment-index="5"><span style="font-size:1.4em">SELinux anyone?</span></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="stack" >
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1040px; left: 120px; top: 259px;">
+              <div class="sl-block-content" style="z-index: 12;">
+                <h1><span style="font-size:1.0em">Manage</span></h1>
+                <h1><span style="font-size:1.0em">(aka why Ansible?)</span></h1>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="font-size:1.0em">Goals</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 160px; top: 253px;">
+              <div class="sl-block-content" style="z-index: 12;" >
+                <ul>
+                  <li class="fragment" data-fragment-index="0"><span style="font-size:1.4em">Zero-configuration deployment</span></li>
+                  <li class="fragment" data-fragment-index="1"><span style="font-size:1.4em">Easy management of multiple nodes</span></li>
+                  <li class="fragment" data-fragment-index="2"><span style="font-size:1.4em">Error checking</span></li>
+                  <li class="fragment" data-fragment-index="3"><span style="font-size:1.4em">Multiple CPU architecture support</span></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="font-size:1.0em">Where is my config?</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 880px; left: 200px; top: 288px;">
+              <div class="sl-block-content" style="z-index: 12;" >
+                <ul>
+                  <li class="fragment" data-fragment-index="0"><span style="font-size:1.4em">command line parameters</span></li>
+                  <li class="fragment" data-fragment-index="1"><span style="font-size:1.4em">main configuration file (in YAML)</span></li>
+                  <li class="fragment" data-fragment-index="2"><span style="font-size:1.4em">files included from main file (ex. alert rules or file_sd config)</span></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 80px; top: 145px;">
+              <div class="sl-block-content" style="z-index: 10;">
+                <p><span style="font-size:1.2em">Prometheus</span></p>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 560px; height: 468px; left: 40px; top: 216px;">
+              <div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 12;" data-fragment-index="0">
+                <pre class="python"><code>global:
   evaluation_interval: 15s
   scrape_interval: 15s
   scrape_timeout: 10s
@@ -365,17 +625,34 @@ scrape_configs:
   - job_name: node
     file_sd_configs:
     - files:
-      - "/etc/prometheus/file_sd/node.yml"</code></pre></div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" style="min-width: 30px; min-height: 30px; width: 568px; height: 468px; left: 676px; top: 216px;" data-block-id="7db3d246e1dd5480f6b3deb6286e6c52"><div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 13;" data-fragment-index="1"><pre class="python"><code># Nothing.</code></pre></div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 480px; left: 720px; top: 144px;" _vimium-has-onclick-listener="" data-block-id="a072963ab4fa57df31bfae9449cc81d3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<p><span style="font-size:1.2em">Ansible</span></p>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 960px; left: 160px; top: 35px;" _vimium-has-onclick-listener="" data-block-id="761447cfe6b65b716c6384f3b5e4e166"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">Main config</span></h2>
-</div></div></section><section data-id="45f13f8c2f294ce6a916fa700865f1de"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 480px; left: 80px; top: 128px;" _vimium-has-onclick-listener="" data-block-id="40e2a13252ced6ca66ba86e46ed02892"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<p><span style="font-size:1.0em">Prometheus</span></p>
-</div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" style="width: 560px; height: 536px; left: 40px; top: 183px;" data-block-id="cfe05829288def8e80f22ff87c554c87"><div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 11;" data-fragment-index="0"><pre class="python"><code>global:
+      - "/etc/prometheus/file_sd/node.yml"</code></pre>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 568px; height: 468px; left: 676px; top: 216px;" >
+              <div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 13;" data-fragment-index="1">
+                <pre class="python"><code># Nothing.</code></pre>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 720px; top: 144px;">
+              <div class="sl-block-content" style="z-index: 14;">
+                <p><span style="font-size:1.2em">Ansible</span></p>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 160px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 15;">
+                <h2><span style="font-size:1.0em">Main config</span></h2>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 80px; top: 128px;">
+              <div class="sl-block-content" style="z-index: 10;">
+                <p><span style="font-size:1.0em">Prometheus</span></p>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="width: 560px; height: 536px; left: 40px; top: 183px;" >
+              <div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 11;" data-fragment-index="0">
+                <pre class="python"><code>global:
   evaluation_interval: 15s
   scrape_interval: 15s
   scrape_timeout: 10s
@@ -402,8 +679,12 @@ scrape_configs:
   - job_name: node
     file_sd_configs:
     - files:
-      - "/etc/prometheus/file_sd/node.yml"</code></pre></div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" style="width: 568px; height: 536px; left: 676px; top: 184px;" data-block-id="9a5c2cbe30e057c98f0a9696ba3e778d"><div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 12;" data-fragment-index="1"><pre class="python"><code>prometheus_alertmanager_config:
+      - "/etc/prometheus/file_sd/node.yml"</code></pre>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="width: 568px; height: 536px; left: 676px; top: 184px;" >
+              <div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 12;" data-fragment-index="1">
+                <pre class="python"><code>prometheus_alertmanager_config:
   - scheme: http
     static_configs:
       - targets: 
@@ -418,16 +699,29 @@ prometheus_scrape_configs:
 prometheus_targets:
   node:
     - targets:
-      - "localhost:9100"</code></pre></div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 480px; left: 720px; top: 128px;" _vimium-has-onclick-listener="" data-block-id="339c4e45d58c087573b1b30e7d04e3a1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<p><span style="font-size:1.0em">Ansible</span></p>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 960px; left: 160px; top: 35px;" _vimium-has-onclick-listener="" data-block-id="72bb4fc72698677a45c766452e70d2f0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">Main config (extended)</span></h2>
-</div></div></section><section data-id="5ddf83159d52eb8b53dc9d953b65c56f"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 960px; left: 160px; top: 35px;" _vimium-has-onclick-listener="" data-block-id="ce012f6005986548384682c5740e42fb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">Command line parameters</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="code" data-vivaldi-spatnav-clickable="1" data-block-id="cf13af922f64a0c393358f5c0c119082" style="min-width: 30px; min-height: 30px; width: 800px; height: 504px; left: 240px; top: 180px;"><div class="sl-block-content" data-highlight-theme="solarized-light" style="z-index: 12;"><pre class="python"><code># Ansible managed file. Be wary of possible overwrites.
+      - "localhost:9100"</code></pre>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 720px; top: 128px;">
+              <div class="sl-block-content" style="z-index: 13;">
+                <p><span style="font-size:1.0em">Ansible</span></p>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 160px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 14;">
+                <h2><span style="font-size:1.0em">Main config (extended)</span></h2>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 160px; top: 35px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="font-size:1.0em">Command line parameters</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 800px; height: 504px; left: 240px; top: 180px;">
+              <div class="sl-block-content" data-highlight-theme="solarized-light" style="z-index: 12;">
+                <pre class="python"><code># Ansible managed file. Be wary of possible overwrites.
 [Unit]
 Description=Prometheus
 After=network.target
@@ -449,110 +743,144 @@ SyslogIdentifier=prometheus
 Restart=always
 
 [Install]
-WantedBy=multi-user.target</code></pre></div></div></section><section data-id="18953b44fafd69535a2cfe2898da0a88"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 321px;" _vimium-has-onclick-listener="" data-block-id="d7629b5548334f8c6f3f9c5886a51ef9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="" dir="ui">
-<h2><span style="font-size:1.0em">Everyone makes mistakes.</span></h2>
-</div></div>
-
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="0eed6f95e04af4f02fd7fab7c2c58a94" style="height: auto; min-width: 30px; min-height: 30px; width: 880px; left: 200px; top: 534px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-vivaldi-spatnav-clickable="1" data-fragment-index="0">
-<p style="text-align:center"><span>preflight checks included in role</span></p>
-
-<p style="text-align:center">use `promtool` in <span>ansible `validate` directive </span></p>
-</div></div></section><section data-id="3b8b0d92822fcb5d98830340b6556c6f"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 880px; left: 200px; top: 250px;" _vimium-has-onclick-listener="" data-block-id="7d9aae8d3fd32f8265eb409e06919be7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="" dir="ui">
-<h2><span style="font-size:1.0em">Gathering system metrics from many nodes with multiple CPU architectures?</span></h2>
-</div></div></section><section data-id="959c97b5f6ae31be0bc4b812290f57e6"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 800px; left: 240px; top: 37px;" _vimium-has-onclick-listener="" data-block-id="62f33dbe654df1732b4358de4f1fbd3d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">node_exporter!</span></h2>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="f5acb662c5ad98fce6d5873649c12d41" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 177px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li class="fragment" data-fragment-index="0">One binary</li>
-	<li class="fragment" data-fragment-index="1">Simple configuration with cli flags</li>
-</ul>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="c56117d4e789f43d0d286399c7be0aa9" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 335px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-vivaldi-spatnav-clickable="1" data-fragment-index="2">
-<h3><span style="font-size:1.0em">ansible role bonuses:</span></h3>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="4fbc8759708d558acf1a6c85bffb70fb" style="height: auto; min-width: 30px; min-height: 30px; width: 640px; left: 320px; top: 432px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li class="fragment" data-fragment-index="3">versioning</li>
-	<li class="fragment" data-fragment-index="4">system user management</li>
-	<li class="fragment" data-fragment-index="5">CPU architecture auto-detection</li>
-	<li class="fragment" data-fragment-index="6">systemd service files</li>
-	<li class="fragment" data-fragment-index="7">linux capabilites support</li>
-	<li class="fragment" data-fragment-index="8">basic SELinux support</li>
-</ul>
-</div></div></section></section><section class="stack" data-id="6edc9a0a2f555cbd61907eab80db0935"><section data-id="96bb52b771b2458846ba43cd9cdb419e"><div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1040px; left: 120px; top: 311px;" _vimium-has-onclick-listener="" data-block-id="a13987c5b96118dcd513b23dc326b25f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h1><span style="font-size:1.0em">Example</span></h1>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" data-block-id="30e4eb2155b84b4709c71546b49a9185" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 465px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-vivaldi-spatnav-clickable="1" data-fragment-index="0">
-<p><a href="https://demo.cloudalchemy.org" target="_blank">demo.cloudalchemy.org</a></p>
-
-<p> </p>
-
-<p><a href="https://travis-ci.org/cloudalchemy/demo-site" style="" target="_blank">daily ansible deploy</a></p>
-</div></div></section><section data-id="646e54b598e651a0d45d60403bb81762" data-background-iframe="https://demo.cloudalchemy.org" data-background-interactive="true"></section><section data-id="0981c13109e3c29cd9075383fde644e6" data-background-iframe="https://api.travis-ci.org/v3/job/352306790/log.txt" data-background-interactive="true"></section></section><section data-id="95cd6520ced78c67fbb20d546b32d60d">
-<div class="sl-block" data-block-type="text" _vimium-has-onclick-listener="" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 244px;" data-block-id="7f0cb04b0d2393dd71290587b35d2b60" data-vivaldi-spatnav-clickable="1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" _vimium-has-onclick-listener="" data-vivaldi-spatnav-clickable="1">
-<ul>
-	<li style="text-align:left"><a href="https://presentation.cloudalchemy.org" target="_blank">presentation.cloudalchemy.org</a></li>
-	<li style="text-align:left"><a href="https://github.com/cloudalchemy" target="_blank">github.com/cloudalchemy</a></li>
-	<li style="text-align:left"><a href="https://prometheus.io/docs" target="_blank">prometheus.io/docs</a></li>
-	<li style="text-align:left"><a href="https://www.safaribooksonline.com/library/view/prometheus-up/9781492034131" target="_blank">www.safaribooksonline.com/library/view/prometheus-up/9781492034131</a></li>
-	<li style="text-align:left"><a href="https://prometheus.io/webtools/alerting/routing-tree-editor/" target="_blank">prometheus.io/webtools/alerting/routing-tree-editor</a></li>
-	<li style="text-align:left"><a href="https://prometheusbook.com/" target="_blank">prometheusbook.com</a></li>
-</ul>
-</div></div>
-<div class="sl-block" data-block-type="text" data-vivaldi-spatnav-clickable="1" style="height: auto; width: 1040px; left: 126px; top: 35px;" _vimium-has-onclick-listener="" data-block-id="082f939c79de290614fa4946de86e887"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-vivaldi-spatnav-clickable="1" _vimium-has-onclick-listener="">
-<h2><span style="font-size:1.0em">Resources</span></h2>
-</div></div></section>
-			</div>
-		</div>
-
-		<script>
-			var SLConfig = {"deck": {"id":1203824,"slug":"promansible","title":"Prometheus deployment with Ansible","description":"","width":1280,"height":720,"visibility":"all","published_at":"2018-03-10T10:50:05.341Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/e8c9f1f385edce878b82501822d1721c/thumb.jpg?1521010735","view_count":4,"user":{"id":844289,"username":"pawelkrupa","name":"Paweł Krupa","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-s0K-xGVGpJE/AAAAAAAAAAI/AAAAAAAAC40/omQQabOQ2EE/photo.jpg","paid":true,"pro":false,"lite":true,"team_id":null,"settings":{"id":897140,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":false,"slide_count":52,"rtl":false,"version":2,"collaborative":true,"deck_user_editor_limit":1,"data_updated_at":1521013154201,"font_typekit":null,"font_google":null,"notes":{"6fd9d58db548e55f7bccb63d7777247f":"- easy to use\n- agentless\n- just ssh and python needed\n- everything included","cdff4f24a1b1a37155a0766634d735e3":"- Prometheus is an open source, metrics-based monitoring system.\n- Prometheus does one thing and it does it well.\n- A simple text format makes it easy to expose metrics to Prometheus.\n- The data model identifies each time series an unordered set of key-value pairs called labels. \n- The scraped data is stored, from where you can use it in dashboards using PromQL or send alerts to the Alertmanager\nwhich will can them into pages, emails, and other notifications.\n- The PromQL query language allows aggregation across any of labels.\n- Alerts can be defined using the exact same PromQL query language that you use for graphing.\n- Graphed in dashboard systems such as Grafana.","baa11d1e6671a29af73b82883f3ca79c":"- jenkins build job build time\n- on port 9118","b4de34687d7fc029eb3d670dbae4affc":"plaintext\nhttp","fe337775a067327b03548b766f75d783":"software exposes it's metrics\nexamples:\n - caddy web server\n - grafana\n - etcd","bdd1f7b2420b02398b5cf7f99d0ccba0":"embedded into prometheus\nwhite\ngood for debugging","ffa8d1e8422c637823f46ddfcbf3447d":"kausal.co\nbuild-in simple alerting method"}}};
-
-
-			// Use local fonts
-			SLConfig.fonts_url = 'lib/fonts/';
-		</script>
-
-		<script src="lib/head.min.js"></script>
-		<script src="lib/reveal.min.js"></script>
-		<script src="lib/offline.js"></script>
-
-		<!-- Initialize the presentation -->
-		<script>
-			Reveal.initialize({
-				width: 1280,
-				height: 720,
-				margin: 0.05,
-
-				controls: true,
-				progress: true,
-				history: true,
-				mouseWheel: false,
-				showNotes: false,
-				slideNumber: false,
-
-				autoSlide: 0 || 0,
-				autoSlideStoppable: true,
-
-				center: false,
-				shuffle: false,
-				loop: false,
-				rtl: false,
-
-				transition: "slide",
-				backgroundTransition: "slide",
-
-				dependencies: [
-					{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
-					{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-		</script>
-
-		
-
-	</body>
+WantedBy=multi-user.target</code></pre>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 321px;">
+              <div class="sl-block-content" style="z-index: 11;"   dir="ui">
+                <h2><span style="font-size:1.0em">Everyone makes mistakes.</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 880px; left: 200px; top: 534px;">
+              <div class="sl-block-content fragment" style="z-index: 13;"  data-fragment-index="0">
+                <p style="text-align:center"><span>preflight checks included in role</span></p>
+                <p style="text-align:center">use `promtool` in <span>ansible `validate` directive </span></p>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 880px; left: 200px; top: 250px;">
+              <div class="sl-block-content" style="z-index: 10;"   dir="ui">
+                <h2><span style="font-size:1.0em">Gathering system metrics from many nodes with multiple CPU architectures?</span></h2>
+              </div>
+            </div>
+          </section>
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 240px; top: 37px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h2><span style="font-size:1.0em">node_exporter!</span></h2>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 177px;">
+              <div class="sl-block-content" style="z-index: 12;" >
+                <ul>
+                  <li class="fragment" data-fragment-index="0">One binary</li>
+                  <li class="fragment" data-fragment-index="1">Simple configuration with cli flags</li>
+                </ul>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 335px;">
+              <div class="sl-block-content fragment" style="z-index: 13;"  data-fragment-index="2">
+                <h3><span style="font-size:1.0em">ansible role bonuses:</span></h3>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 640px; left: 320px; top: 432px;">
+              <div class="sl-block-content" style="z-index: 14;" >
+                <ul>
+                  <li class="fragment" data-fragment-index="3">versioning</li>
+                  <li class="fragment" data-fragment-index="4">system user management</li>
+                  <li class="fragment" data-fragment-index="5">CPU architecture auto-detection</li>
+                  <li class="fragment" data-fragment-index="6">systemd service files</li>
+                  <li class="fragment" data-fragment-index="7">linux capabilites support</li>
+                  <li class="fragment" data-fragment-index="8">basic SELinux support</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="stack" >
+          <section >
+            <div class="sl-block" data-block-type="text" style="height: auto; width: 1040px; left: 120px; top: 311px;">
+              <div class="sl-block-content" style="z-index: 11;">
+                <h1><span style="font-size:1.0em">Example</span></h1>
+              </div>
+            </div>
+            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 340px; top: 465px;">
+              <div class="sl-block-content fragment" style="z-index: 12;"  data-fragment-index="0">
+                <p><a href="https://demo.cloudalchemy.org" target="_blank">demo.cloudalchemy.org</a></p>
+                <p> </p>
+                <p><a href="https://travis-ci.org/cloudalchemy/demo-site"  target="_blank">daily ansible deploy with travis CI</a></p>
+              </div>
+            </div>
+          </section>
+          <section  data-background-iframe="https://demo.cloudalchemy.org" data-background-interactive="true"></section>
+          <section  data-background-iframe="https://api.travis-ci.org/v3/job/352306790/log.txt" data-background-interactive="true"></section>
+        </section>
+        <section >
+          <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 1120px; left: 80px; top: 244px;">
+            <div class="sl-block-content" style="z-index: 12;">
+              <ul>
+                <li style="text-align:left"><a href="http://presentation.cloudalchemy.org" target="_blank">presentation.cloudalchemy.org</a></li>
+                <li style="text-align:left"><a href="https://github.com/cloudalchemy" target="_blank">github.com/cloudalchemy</a></li>
+                <li style="text-align:left"><a href="https://prometheus.io/docs" target="_blank">prometheus.io/docs</a></li>
+                <li style="text-align:left"><a href="https://www.safaribooksonline.com/library/view/prometheus-up/9781492034131" target="_blank">www.safaribooksonline.com/library/view/prometheus-up/9781492034131</a></li>
+                <li style="text-align:left"><a href="https://prometheus.io/webtools/alerting/routing-tree-editor/" target="_blank">prometheus.io/webtools/alerting/routing-tree-editor</a></li>
+                <li style="text-align:left"><a href="https://prometheusbook.com/" target="_blank">prometheusbook.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="sl-block" data-block-type="text" style="height: auto; width: 1040px; left: 126px; top: 35px;">
+            <div class="sl-block-content" style="z-index: 13;">
+              <h2><span style="font-size:1.0em">Resources</span></h2>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script>
+      var SLConfig = {"deck": {"id":1203824,"slug":"promansible","title":"Prometheus deployment with Ansible","description":"","width":1280,"height":720,"visibility":"all","published_at":"2018-03-10T10:50:05.341Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/e8c9f1f385edce878b82501822d1721c/thumb.jpg?1521010735","view_count":4,"user":{"id":844289,"username":"pawelkrupa","name":"Paweł Krupa","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-s0K-xGVGpJE/AAAAAAAAAAI/AAAAAAAAC40/omQQabOQ2EE/photo.jpg","paid":true,"pro":false,"lite":true,"team_id":null,"settings":{"id":897140,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":false,"slide_count":52,"rtl":false,"version":2,"collaborative":true,"deck_user_editor_limit":1,"data_updated_at":1521013154201,"font_typekit":null,"font_google":null,"notes":{"6fd9d58db548e55f7bccb63d7777247f":"- easy to use\n- agentless\n- just ssh and python needed\n- everything included","cdff4f24a1b1a37155a0766634d735e3":"- Prometheus is an open source, metrics-based monitoring system.\n- Prometheus does one thing and it does it well.\n- A simple text format makes it easy to expose metrics to Prometheus.\n- The data model identifies each time series an unordered set of key-value pairs called labels. \n- The scraped data is stored, from where you can use it in dashboards using PromQL or send alerts to the Alertmanager\nwhich will can them into pages, emails, and other notifications.\n- The PromQL query language allows aggregation across any of labels.\n- Alerts can be defined using the exact same PromQL query language that you use for graphing.\n- Graphed in dashboard systems such as Grafana.","baa11d1e6671a29af73b82883f3ca79c":"- jenkins build job build time\n- on port 9118","b4de34687d7fc029eb3d670dbae4affc":"plaintext\nhttp","fe337775a067327b03548b766f75d783":"software exposes it's metrics\nexamples:\n - caddy web server\n - grafana\n - etcd","bdd1f7b2420b02398b5cf7f99d0ccba0":"embedded into prometheus\nwhite\ngood for debugging","ffa8d1e8422c637823f46ddfcbf3447d":"kausal.co\nbuild-in simple alerting method"}}};
+      
+      
+      // Use local fonts
+      SLConfig.fonts_url = 'lib/fonts/';
+    </script>
+    <script src="lib/head.min.js"></script>
+    <script src="lib/reveal.min.js"></script>
+    <script src="lib/offline.js"></script>
+    <!-- Initialize the presentation -->
+    <script>
+      Reveal.initialize({
+      	width: 1280,
+      	height: 720,
+      	margin: 0.05,
+      
+      	controls: true,
+      	progress: true,
+      	history: true,
+      	mouseWheel: false,
+      	showNotes: false,
+      	slideNumber: false,
+      
+      	autoSlide: 0 || 0,
+      	autoSlideStoppable: true,
+      
+      	center: false,
+      	shuffle: false,
+      	loop: false,
+      	rtl: false,
+      
+      	transition: "slide",
+      	backgroundTransition: "slide",
+      
+      	dependencies: [
+      		{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      		{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      		{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
+      		{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+      	]
+      });
+    </script>
+  </body>
 </html>
