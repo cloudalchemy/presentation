@@ -1,0 +1,9 @@
+div.logo {
+  background-color: transparent;
+  position: absolute;
+  left: -2.5em;
+  bottom: -2.5em;
+  transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  -webkit-transform: scale(0.5, 0.5);
+}
