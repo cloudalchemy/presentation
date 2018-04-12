@@ -9,8 +9,7 @@ Just go to https://presentation.cloudalchemy.org
 
 ### offline usage 
 
-This presentation can be used offline. Just use some simple webserver to host static files from `docs` directory. For example running simple python server can do:
-1. Go to `docs/`
-2. Run `python -m SimpleHTTPServer 8080`
-3. In browser go to `localhost:8080`
-4. Profit!
+This presentation can be used offline. Just use some simple webserver to host static files. For example do it by running simple python server:
+1. Run `python -m SimpleHTTPServer 8080`
+2. In browser go to `localhost:8080`
+3. Profit!
