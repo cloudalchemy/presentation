@@ -294,7 +294,7 @@ if __name__ == "__main__":
                   <pre class="python"><code>scrape_configs:
   - job_name: 'node_exporter'
     static_configs:
-      - targets: 
+      - targets:
           - 'localhost:9100'</code></pre>
                 </div>
               </div>
@@ -406,7 +406,7 @@ if __name__ == "__main__":
                     <li style="text-align: left;" class="fragment" data-fragment-index="0"><span style="font-size:1.6em">silencing</span></li>
                     <li style="text-align: left;" class="fragment" data-fragment-index="1">
                       <span style="font-size:1.6em">inhibition</span><br>
-                       
+
                     </li>
                   </ul>
                 </div>
@@ -516,7 +516,7 @@ $ tar -xzf prometheus-2.2.0.linux-amd64.tar.gz</code></pre>
             </div>
             <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 1120px; height: 72px; left: 80px; top: 252px;">
               <div class="sl-block-content fragment" data-highlight-theme="solarized-light" style="z-index: 14;" data-fragment-index="1">
-                <pre class="bash"><code>$ sudo chmod +x prometheus-2.2.0.linux-amd64/{prometheus,promtool} 
+                <pre class="bash"><code>$ sudo chmod +x prometheus-2.2.0.linux-amd64/{prometheus,promtool}
 $ sudo cp prometheus-2.2.0.linux-amd64/{prometheus,promtool} /usr/local/bin/
 $ sudo chown root:root /usr/local/bin/{prometheus,promtool}</code></pre>
               </div>
@@ -687,7 +687,7 @@ scrape_configs:
                 <pre class="python"><code>prometheus_alertmanager_config:
   - scheme: http
     static_configs:
-      - targets: 
+      - targets:
         - "localhost:9093"
 
 prometheus_scrape_configs:
@@ -733,13 +733,13 @@ User=prometheus
 Group=prometheus
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/local/bin/prometheus \
-  --config.file=/etc/prometheus/prometheus.yml \                                                                                                                       
-  --storage.tsdb.path=/var/lib/prometheus \                                                                                                                            
-  --storage.tsdb.retention=30d \                                                                                                                                       
-  --web.listen-address=0.0.0.0:9090 \                                                                                                                                  
-  --web.external-url=http://demo.cloudalchemy.org:9090                                                                                                                 
-                                                                                                                                                                       
-SyslogIdentifier=prometheus                                                                                                                                            
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path=/var/lib/prometheus \
+  --storage.tsdb.retention=30d \
+  --web.listen-address=0.0.0.0:9090 \
+  --web.external-url=http://demo.cloudalchemy.org:9090
+
+SyslogIdentifier=prometheus
 Restart=always
 
 [Install]
@@ -825,6 +825,7 @@ WantedBy=multi-user.target</code></pre>
                 <li style="text-align:left"><a href="http://presentation.cloudalchemy.org" target="_blank">presentation.cloudalchemy.org</a></li>
                 <li style="text-align:left"><a href="https://github.com/cloudalchemy" target="_blank">github.com/cloudalchemy</a></li>
                 <li style="text-align:left"><a href="https://prometheus.io/docs" target="_blank">prometheus.io/docs</a></li>
+                <li style="text-align:left"><a href="https://github.com/juliusv/ansible_prometheus_demo" target="_blank">A demo setup of Prometheus using CloudAlchemy's Ansible roles</a></li>
                 <li style="text-align:left"><a href="https://www.safaribooksonline.com/library/view/prometheus-up/9781492034131" target="_blank">www.safaribooksonline.com/library/view/prometheus-up/9781492034131</a></li>
                 <li style="text-align:left"><a href="https://prometheus.io/webtools/alerting/routing-tree-editor/" target="_blank">prometheus.io/webtools/alerting/routing-tree-editor</a></li>
                 <li style="text-align:left"><a href="https://prometheusbook.com/" target="_blank">prometheusbook.com</a></li>
@@ -841,8 +842,8 @@ WantedBy=multi-user.target</code></pre>
     </div>
     <script>
       var SLConfig = {"deck": {"id":1203824,"slug":"promansible","title":"Prometheus deployment with Ansible","description":"","width":1280,"height":720,"visibility":"all","published_at":"2018-03-10T10:50:05.341Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/e8c9f1f385edce878b82501822d1721c/thumb.jpg?1521010735","view_count":4,"user":{"id":844289,"username":"pawelkrupa","name":"Paweł Krupa","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-s0K-xGVGpJE/AAAAAAAAAAI/AAAAAAAAC40/omQQabOQ2EE/photo.jpg","paid":true,"pro":false,"lite":true,"team_id":null,"settings":{"id":897140,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":false,"slide_count":52,"rtl":false,"version":2,"collaborative":true,"deck_user_editor_limit":1,"data_updated_at":1521013154201,"font_typekit":null,"font_google":null,"notes":{"6fd9d58db548e55f7bccb63d7777247f":"- easy to use\n- agentless\n- just ssh and python needed\n- everything included","cdff4f24a1b1a37155a0766634d735e3":"- Prometheus is an open source, metrics-based monitoring system.\n- Prometheus does one thing and it does it well.\n- A simple text format makes it easy to expose metrics to Prometheus.\n- The data model identifies each time series an unordered set of key-value pairs called labels. \n- The scraped data is stored, from where you can use it in dashboards using PromQL or send alerts to the Alertmanager\nwhich will can them into pages, emails, and other notifications.\n- The PromQL query language allows aggregation across any of labels.\n- Alerts can be defined using the exact same PromQL query language that you use for graphing.\n- Graphed in dashboard systems such as Grafana.","baa11d1e6671a29af73b82883f3ca79c":"- jenkins build job build time\n- on port 9118","b4de34687d7fc029eb3d670dbae4affc":"plaintext\nhttp","fe337775a067327b03548b766f75d783":"software exposes it's metrics\nexamples:\n - caddy web server\n - grafana\n - etcd","bdd1f7b2420b02398b5cf7f99d0ccba0":"embedded into prometheus\nwhite\ngood for debugging","ffa8d1e8422c637823f46ddfcbf3447d":"kausal.co\nbuild-in simple alerting method"}}};
-      
-      
+
+
       // Use local fonts
       SLConfig.fonts_url = 'lib/fonts/';
     </script>
@@ -855,25 +856,25 @@ WantedBy=multi-user.target</code></pre>
       	width: 1280,
       	height: 720,
       	margin: 0.05,
-      
+
       	controls: true,
       	progress: true,
       	history: true,
       	mouseWheel: false,
       	showNotes: false,
       	slideNumber: false,
-      
+
       	autoSlide: 0 || 0,
       	autoSlideStoppable: true,
-      
+
       	center: false,
       	shuffle: false,
       	loop: false,
       	rtl: false,
-      
+
       	transition: "slide",
       	backgroundTransition: "slide",
-      
+
       	dependencies: [
       		{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
       		{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
